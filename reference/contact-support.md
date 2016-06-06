@@ -4,7 +4,7 @@ In order to provide the most efficient support, we request you use our help desk
 
 ## Open a Support Ticket
 
-1. Log into your account at http://accounts.platform.sh and click on the `Support Tickets` tab.
+1. Log into your account at https://accounts.platform.sh and click on the `Support Tickets` tab.
 
 ![image](/images/login-screen1.png)
 
