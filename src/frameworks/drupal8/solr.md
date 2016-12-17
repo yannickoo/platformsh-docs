@@ -25,3 +25,26 @@ the server a name and a description.
 > **note**
 > The name of the host depends on the name you gave the relationship in `.platform.app.yaml`. If
 > you called the relationship `solrsearch` instead, then the hostname will be `solrsearch.internal`.
+
+
+
+```php
+
+// This should work, but doesn't seem to get picked up. Still WIP.
+
+// Configure the Solr server.
+if (isset($_ENV['PLATFORM_RELATIONSHIPS'])) {
+  $relationships = json_decode(base64_decode($_ENV['PLATFORM_RELATIONSHIPS']), TRUE);
+
+  if (!empty($relationships['solr'][0])) {
+    $solr = $relationships['solr'][0];
+
+    $solr_server_name = 'default_solr_server';
+
+    $config['search_api.server.' . $solr_server_name]['backend_config']['connector_config']['scheme'] = $solr['scheme'];
+    $config['search_api.server.' . $solr_server_name]['backend_config']['connector_config']['host'] = $solr['host'];
+    $config['search_api.server.' . $solr_server_name]['backend_config']['connector_config']['port'] = $solr['port'];
+    $config['search_api.server.' . $solr_server_name]['backend_config']['connector_config']['path'] = '/' . $solr['path'];
+  }
+}
+```
